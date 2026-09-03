@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PILI ALERTS — Alertas e overlays para lives</title>
+<meta name="description" content="PILI ALERTS é um programa de alertas e overlays para quem transmite ao vivo no TikTok, YouTube, Twitch e Kick — tudo numa única tela, ao mesmo tempo.">
+<style>
+  :root {
+    --bg: #0a0510;
+    --bg-card: #150a22;
+    --border: #2d1846;
+    --text: #f2ecfa;
+    --text-dim: #b7a6d1;
+    --magenta: #ff1f8f;
+    --purple: #9b4dff;
+    --gold: #ffc857;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    padding: 60px 0 50px;
+    text-align: center;
+    background: radial-gradient(circle at 50% -10%, #2d1046 0%, var(--bg) 65%);
+    border-bottom: 1px solid var(--border);
+  }
+  header img { width: 92px; margin-bottom: 20px; }
+  header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  header p.tagline {
+    color: var(--text-dim);
+    font-size: 16px;
+    margin-top: 10px;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .platforms {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .platforms span {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  main { padding: 56px 0; }
+  section { margin-bottom: 48px; }
+  h2 {
+    font-size: 20px;
+    margin-bottom: 14px;
+    color: var(--gold);
+  }
+  p { color: var(--text-dim); font-size: 15px; margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+
+  .features {
+    display: grid;
+    gap: 14px;
+  }
+  .feature {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--magenta);
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+  .feature b { color: var(--text); display: block; margin-bottom: 4px; font-size: 14.5px; }
+  .feature span { color: var(--text-dim); font-size: 14px; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    text-align: center;
+  }
+  footer p { color: #7a6a92; font-size: 12.5px; }
+  footer a { color: var(--purple); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img src="logo.png" alt="PILI ALERTS">
+    <h1>PILI ALERTS</h1>
+    <p class="tagline">Alertas e overlays para quem transmite ao vivo — em várias plataformas, na mesma tela, ao mesmo tempo.</p>
+    <div class="platforms">
+      <span>TikTok</span>
+      <span>YouTube</span>
+      <span>Twitch</span>
+      <span>Kick</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2>O que é o PILI ALERTS</h2>
+    <p>O PILI ALERTS é um programa instalado no computador de quem transmite ao vivo, que conecta simultaneamente às contas do streamer no TikTok, YouTube, Twitch e Kick, e mostra tudo isso — chat, seguidores, presentes, membros — dentro do OBS ou de qualquer outro programa de transmissão, através de janelas de overlay personalizáveis.</p>
+    <p>O objetivo é simples: quem transmite pra mais de uma plataforma ao mesmo tempo não precisa mais ficar alternando entre telas separadas pra acompanhar o que está acontecendo em cada uma.</p>
+  </section>
+
+  <section>
+    <h2>Principais recursos</h2>
+    <div class="features">
+      <div class="feature">
+        <b>Chat unificado</b>
+        <span>Mensagens de todas as plataformas conectadas aparecem juntas, na mesma janela, com o design que o streamer escolher.</span>
+      </div>
+      <div class="feature">
+        <b>Alertas personalizáveis</b>
+        <span>Avisos na tela quando alguém segue, entra, envia um presente ou vira membro — com imagem, texto e som próprios.</span>
+      </div>
+      <div class="feature">
+        <b>Integração oficial com o YouTube</b>
+        <span>Login opcional com a conta do Google para identificar o nível de membership de cada espectador, e localizar a própria live automaticamente.</span>
+      </div>
+      <div class="feature">
+        <b>Editor de clipes</b>
+        <span>Recorte dos melhores momentos da transmissão direto no programa, processado localmente no computador do usuário.</span>
+      </div>
+      <div class="feature">
+        <b>Narração por voz</b>
+        <span>Leitura das mensagens do chat em voz alta, com uma voz neural que roda totalmente offline.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Como funciona</h2>
+    <p>O PILI ALERTS roda inteiramente no computador do próprio streamer. Ele se conecta às plataformas usando as credenciais que o próprio usuário autoriza, e as informações da live (chat, seguidores, presentes) são processadas localmente para gerar os alertas e overlays — sem passar por nenhum servidor da PILI.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><a href="privacidade.html">Política de Privacidade</a></p>
+    <p style="margin-top:8px;">PILI ALERTS</p>
+  </div>
+</footer>
+
+</body>
+</html>
