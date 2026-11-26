@@ -11,6 +11,9 @@
 
   /* ---------- utilidades ---------- */
   const lim = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  // celular / tela de toque: tira desfoques e usa menos camadas no logo
+  const leve = matchMedia('(max-width: 900px), (pointer: coarse)').matches;
+  const borra = (el, px) => { el.style.filter = (leve || px < .05) ? 'none' : `blur(${px.toFixed(2)}px)`; };
   const E = {
     sai: (x) => 1 - Math.pow(1 - x, 3),
     mola: (x) => { const c = 1.9; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); },
@@ -42,7 +45,7 @@
       const p = fase(tl, .1 + i * .08, .6);
       s.style.opacity = p;
       s.style.transform = `translateY(${(1 - p) * 30}px)`;
-      s.style.filter = `blur(${(1 - p) * 6}px)`;
+      borra(s, (1 - p) * 6);
     });
   }
   const entra = (el, p, dx = 0, dy = 40, esc = 1) => {
@@ -56,7 +59,7 @@
   }
   function logoEm(el, x, y, tam, P, camadas = 24) {
     const box = h(el, 'div', '', `position:absolute;left:${x}px;top:${y}px;width:${tam}px;height:${tam}px`);
-    const lg = logo3D(box, P.c, P.c3, camadas, 80);
+    const lg = logo3D(box, P.c, P.c3, leve ? Math.min(camadas, 10) : camadas, 80);
     return { box, ...lg };
   }
   const brilhoLogo = (lg, t, fase0 = 0) => {
@@ -79,8 +82,8 @@
         brilhoLogo(lg, t);
         const n = fase(t, .7, 1.2);
         nome.style.opacity = n;
-        nome.style.letterSpacing = `${(.35 - .4 * n).toFixed(3)}em`;
-        nome.style.filter = `blur(${(1 - n) * 10}px)`;
+        if (!leve) nome.style.letterSpacing = `${(.35 - .4 * n).toFixed(3)}em`;
+        borra(nome, (1 - n) * 10);
         entra(s, fase(t, 1.4, .9), 0, 20);
       };
     },
@@ -412,7 +415,7 @@
             const o = fase(t, 2.7, .6, E.mola);
             ok.style.opacity = lim(o);
             ok.style.transform = `scale(${o})`;
-            moldura.style.filter = `blur(${fase(t, 2.7, .5) * 4}px)`;
+            borra(moldura, fase(t, 2.7, .5) * 4);
             entra(tx, fase(t, 3, .6), 0, 20);
           };
         },
@@ -521,7 +524,7 @@
           for (let i = 1; i < 6; i++) { const gl = document.createElementNS(ns, 'line'); gl.setAttribute('x1', 0); gl.setAttribute('x2', 530); gl.setAttribute('y1', i * 55); gl.setAttribute('y2', i * 55); gl.setAttribute('stroke', 'rgba(255,255,255,.06)'); svg.appendChild(gl); }
           const curva = document.createElementNS(ns, 'path');
           curva.setAttribute('fill', 'none'); curva.setAttribute('stroke', P.c); curva.setAttribute('stroke-width', '4'); curva.setAttribute('stroke-linecap', 'round');
-          curva.style.filter = `drop-shadow(0 0 8px ${P.c})`;
+          if (!leve) curva.style.filter = `drop-shadow(0 0 8px ${P.c})`;
           svg.appendChild(curva);
           const area = document.createElementNS(ns, 'path');
           area.setAttribute('fill', `${P.c}22`); svg.insertBefore(area, curva);
@@ -792,6 +795,7 @@
     btComprar.href = linkWhats(filme.whats);
     btComprar.target = '_blank'; btComprar.rel = 'noopener';
     cinema.classList.add('aberto');
+    document.body.classList.add('em-filme'); // pausa o fundo e os logos da página
     cinema.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     escala();
@@ -800,6 +804,7 @@
   function fechar() {
     tocando = false; calar();
     cinema.classList.remove('aberto');
+    document.body.classList.remove('em-filme');
     cinema.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     setTimeout(() => { if (!cinema.classList.contains('aberto')) { palco.innerHTML = ''; filme = null; } }, 650);
@@ -823,7 +828,7 @@
     const pr = tempo / total();
     barraTempo.style.width = `${pr * 100}%`;
     bolinha.style.left = `${pr * 100}%`;
-    if (grade) grade.style.setProperty('--gy', `${(tempo * 36) % 64}px`);
+    if (grade && !leve) grade.style.setProperty('--gy', `${(tempo * 36) % 64}px`);
   }
   function quadroLoop(agora) {
     const dt = Math.min(.25, (agora - antes) / 1000 || 0);

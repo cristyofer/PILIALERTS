@@ -103,6 +103,7 @@ let mx = 0, my = 0;
 addEventListener('pointermove', (e) => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
 
 function anima(agora) {
+  if (document.body.classList.contains('em-filme')) { requestAnimationFrame(anima); return; }
   const t = agora / 1000;
   for (const l of logos) {
     if (!l.visivel) continue;
@@ -120,6 +121,7 @@ function anima(agora) {
       rx = Math.sin(t * .6 + l.fase) * 6;
     }
     if (reduzMovimento) { ry = -18; rx = 4; }
+    ry += (window.PILI.voltas || 0) * 360; // chacoalhou o celular: uma volta inteira
     l.ry += (ry - l.ry) * .08; l.rx += (rx - l.rx) * .08;
     l.gira.style.transform = `rotateX(${l.rx.toFixed(2)}deg) rotateY(${l.ry.toFixed(2)}deg)`;
     if (l.faixa) {
@@ -172,6 +174,7 @@ rolou();
   }
   medir(); addEventListener('resize', medir);
   (function quadro() {
+    if (document.body.classList.contains('em-filme')) { requestAnimationFrame(quadro); return; }
     ctx.clearRect(0, 0, w, h);
     for (const p of pts) {
       p.y -= p.v; p.a += .01;

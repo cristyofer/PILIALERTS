@@ -87,3 +87,25 @@ footer{background:rgba(5,4,9,.75);backdrop-filter:blur(14px);-webkit-backdrop-fi
   .luz-cursor{display:none}
 }
 body.no-passeio .flutua{opacity:0;transform:scale(.6);pointer-events:none}
+/* filme aberto: some o granulado e a luz do mouse (pesam no celular) */
+body.em-filme .granulado,body.em-filme .luz-cursor{display:none}
+@media (max-width:900px),(pointer:coarse){.f-titulo span{filter:none}.quadro{box-shadow:0 0 0 1px rgba(255,255,255,.08)}}
+
+/* ---------- acelerômetro do celular ---------- */
+.sensor-pill{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;gap:10px;padding:11px 18px 11px 14px;border-radius:99px;
+  font-size:14px;font-weight:600;color:#fff;background:rgba(20,18,30,.72);border:1px solid color-mix(in srgb,var(--cor-atual) 55%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 10px 40px -10px var(--cor-atual);
+  transform:translate(-50%,30px);opacity:0;pointer-events:none;transition:opacity .5s,transform .6s var(--suave);white-space:nowrap}
+.sensor-pill.ver{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.sensor-cel{width:14px;height:22px;border-radius:4px;border:2px solid #fff;position:relative;animation:balanca-cel 1.6s ease-in-out infinite}
+.sensor-cel::after{content:"";position:absolute;left:50%;bottom:2px;width:4px;height:2px;margin-left:-2px;border-radius:2px;background:#fff}
+@keyframes balanca-cel{0%,100%{transform:rotate(-18deg)}50%{transform:rotate(18deg)}}
+.sensor-onda{position:fixed;left:50%;top:50%;width:40vmax;height:40vmax;margin:-20vmax 0 0 -20vmax;border-radius:50%;z-index:55;pointer-events:none;
+  border:3px solid var(--cor-atual);box-shadow:0 0 60px var(--cor-atual),inset 0 0 60px var(--cor-atual);animation:onda-sensor 1.2s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes onda-sensor{0%{transform:scale(.05);opacity:1}100%{transform:scale(2.6);opacity:0}}
+body.sacudiu main{animation:treme .55s cubic-bezier(.36,.07,.19,.97)}
+@keyframes treme{10%,90%{transform:translate3d(-2px,0,0)}20%,80%{transform:translate3d(4px,0,0)}30%,50%,70%{transform:translate3d(-7px,0,0)}40%,60%{transform:translate3d(7px,0,0)}}
+body.com-sensor .abertura .raios{translate:calc(var(--incl-x,0) * 70px) calc(var(--incl-y,0) * 50px)}
+body.com-sensor .abertura .piso{translate:calc(var(--incl-x,0) * -40px) 0}
+body.com-sensor .passeio-gigante span{translate:calc(var(--incl-x,0) * -60px) 0}
+body.com-sensor .passeio-orbita{translate:calc(var(--incl-x,0) * 26px) calc(var(--incl-y,0) * 18px)}

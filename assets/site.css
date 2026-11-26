@@ -181,8 +181,8 @@ footer a:hover{text-decoration:underline}
 .surge.d1{transition-delay:.08s}.surge.d2{transition-delay:.16s}.surge.d3{transition-delay:.24s}.surge.d4{transition-delay:.32s}
 
 /* ---------- filme ---------- */
-.cinema{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:rgba(0,0,0,.0);backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0);pointer-events:none;transition:background .5s,backdrop-filter .5s}
-.cinema.aberto{background:rgba(0,0,0,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);pointer-events:auto}
+.cinema{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:rgba(0,0,0,0);pointer-events:none;transition:background .5s}
+.cinema.aberto{background:rgba(3,2,6,.93);pointer-events:auto}
 .tela{width:min(1180px,94vw);transform:scale(.92) translateY(30px);opacity:0;transition:transform .6s var(--suave),opacity .5s}
 .cinema.aberto .tela{transform:none;opacity:1}
 .quadro{position:relative;width:100%;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#050407;box-shadow:0 50px 120px -30px color-mix(in srgb,var(--c) 55%,transparent),0 0 0 1px rgba(255,255,255,.08)}
@@ -208,7 +208,7 @@ footer a:hover{text-decoration:underline}
 .f-titulo{position:absolute;left:0;right:0;top:64px;text-align:center;font-size:52px;font-weight:700;letter-spacing:-.04em;line-height:1.05}
 .f-titulo span{display:inline-block;opacity:0;transform:translateY(30px);filter:blur(6px);margin:0 .12em}
 .f-titulo .cor{color:var(--c2)}
-.f-chip{position:absolute;display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:99px;font-size:22px;font-weight:600;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(6px)}
+.f-chip{position:absolute;display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:99px;font-size:22px;font-weight:600;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);}
 .f-chip i{width:14px;height:14px;border-radius:50%}
 .f-caixa{position:absolute;border-radius:22px;background:rgba(18,16,24,.88);border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 80px -20px rgba(0,0,0,.6);overflow:hidden}
 .f-msg{position:absolute;left:18px;right:18px;display:flex;gap:12px;align-items:center;font-size:19px;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.05)}

@@ -121,6 +121,7 @@ void main(){
     chips.push({ e, k, j, n: lista.length });
   }));
   let fs = 0; // posição suavizada (0 a 4)
+  let giro = 0; // volta extra quando chacoalha o celular
   const posicaoDe = () => {
     const r = passeio.getBoundingClientRect();
     const total = r.height - innerHeight;
@@ -141,6 +142,7 @@ void main(){
     if (r.bottom < -50 || r.top > innerHeight + 50) { document.body.classList.remove('no-passeio'); return null; }
     fs += (f - fs) * (1 - Math.exp(-(window.__dtP || .016) * 6.5));
     const R = celular() ? 250 : 430;
+    giro += ((window.PILI.voltas || 0) * 360 - giro) * (1 - Math.exp(-(window.__dtP || .016) * 3.2));
     logosP.forEach((l, k) => {
       const d = k - fs;
       const a = d * .95;
@@ -151,7 +153,7 @@ void main(){
       l.el.style.zIndex = String(100 - Math.round(Math.abs(d) * 10));
       l.el.style.transform = `translate3d(${x.toFixed(1)}px,${(Math.abs(d) * 20).toFixed(1)}px,${z.toFixed(1)}px)`;
       if (op > 0) {
-        l.gira.style.transform = `rotateX(${(Math.sin(t * .7 + k) * 6 - (my / innerHeight - .5) * 14).toFixed(2)}deg) rotateY(${(-d * 32 + Math.sin(t * .6 + k) * 14 + (mx / innerWidth - .5) * 30).toFixed(2)}deg)`;
+        l.gira.style.transform = `rotateX(${(Math.sin(t * .7 + k) * 6 - (my / innerHeight - .5) * 14).toFixed(2)}deg) rotateY(${(-d * 32 + Math.sin(t * .6 + k) * 14 + (mx / innerWidth - .5) * 30 + giro).toFixed(2)}deg)`;
         const ciclo = ((t + k) % 4) / 4;
         l.faixa.setAttribute('transform', `translate(${(-400 + ciclo * 1700).toFixed(0)} 0) rotate(18 0 500)`);
       }
@@ -212,6 +214,8 @@ void main(){
   /* ---------- laço principal ---------- */
   let ultimo = 0;
   function quadro(agora) {
+    // filme aberto: o fundo fica parado para o celular não engasgar
+    if (document.body.classList.contains('em-filme')) { ultimo = 0; requestAnimationFrame(quadro); return; }
     const t = agora / 1000;
     const dt = Math.min(.5, ultimo ? t - ultimo : .016); ultimo = t;
     window.__dtP = dt;
