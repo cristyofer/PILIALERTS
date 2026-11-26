@@ -3,161 +3,417 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PILI ALERTS — Alertas e overlays para lives</title>
-<meta name="description" content="PILI ALERTS é um programa de alertas e overlays para quem transmite ao vivo no TikTok, YouTube, Twitch e Kick — tudo numa única tela, ao mesmo tempo.">
-<style>
-  :root {
-    --bg: #0a0510;
-    --bg-card: #150a22;
-    --border: #2d1846;
-    --text: #f2ecfa;
-    --text-dim: #b7a6d1;
-    --magenta: #ff1f8f;
-    --purple: #9b4dff;
-    --gold: #ffc857;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
-  }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-
-  header {
-    padding: 60px 0 50px;
-    text-align: center;
-    background: radial-gradient(circle at 50% -10%, #2d1046 0%, var(--bg) 65%);
-    border-bottom: 1px solid var(--border);
-  }
-  header img { width: 92px; margin-bottom: 20px; }
-  header h1 {
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-  }
-  header p.tagline {
-    color: var(--text-dim);
-    font-size: 16px;
-    margin-top: 10px;
-    max-width: 440px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .platforms {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 28px;
-    flex-wrap: wrap;
-  }
-  .platforms span {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 6px 16px;
-    font-size: 13px;
-    color: var(--text-dim);
-  }
-
-  main { padding: 56px 0; }
-  section { margin-bottom: 48px; }
-  h2 {
-    font-size: 20px;
-    margin-bottom: 14px;
-    color: var(--gold);
-  }
-  p { color: var(--text-dim); font-size: 15px; margin-bottom: 12px; }
-  p:last-child { margin-bottom: 0; }
-
-  .features {
-    display: grid;
-    gap: 14px;
-  }
-  .feature {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--magenta);
-    border-radius: 8px;
-    padding: 16px 20px;
-  }
-  .feature b { color: var(--text); display: block; margin-bottom: 4px; font-size: 14.5px; }
-  .feature span { color: var(--text-dim); font-size: 14px; }
-
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 0;
-    text-align: center;
-  }
-  footer p { color: #7a6a92; font-size: 12.5px; }
-  footer a { color: var(--purple); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
-</style>
+<title>PILI — PILI ALERTS, PILI Stream, PILI BOT, PILI UPGRADE SOUND e PILI AUDIO</title>
+<meta name="description" content="PILI ALERTS é um programa de alertas e overlays para quem transmite ao vivo no TikTok, YouTube, Twitch e Kick — tudo numa única tela, ao mesmo tempo. Conheça também PILI Stream, PILI BOT, PILI UPGRADE SOUND e PILI AUDIO.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="PILI — feito para quem vive ao vivo">
+<meta property="og:description" content="PILI ALERTS, PILI Stream, PILI BOT, PILI UPGRADE SOUND e PILI AUDIO.">
+<meta property="og:image" content="logo.png">
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/vivo.css">
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <img src="logo.png" alt="PILI ALERTS">
-    <h1>PILI ALERTS</h1>
-    <p class="tagline">Alertas e overlays para quem transmite ao vivo — em várias plataformas, na mesma tela, ao mesmo tempo.</p>
-    <div class="platforms">
-      <span>TikTok</span>
-      <span>YouTube</span>
-      <span>Twitch</span>
-      <span>Kick</span>
-    </div>
+<!-- ícones -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-whats" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8C29 8.7 23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.8-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.8-3.8-1.8-5.9C5.1 9.9 10 5.2 16 5.2s10.9 4.7 10.9 10.6S22 26.4 16 26.4zm6-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.9 8.9 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.7 1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.8 5 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5 0-.2-.3-.3-.6-.5z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 10 12"><path fill="currentColor" d="M0 0l10 6-10 6z"/></symbol>
+    <symbol id="i-p" viewBox="250 190 560 600"><path fill="currentColor" d="M280 218 L700 218 L782 298 L782 450 L703 527 L493 527 L493 758 L437 758 L390 712 L390 435 L678 435 L678 313 L427 313 Z M305 338 L493 338 L493 410 L420 410 Z"/></symbol>
+  </defs>
+</svg>
+
+<!-- fundo vivo -->
+<canvas id="fundo-vivo" aria-hidden="true"></canvas>
+<div class="granulado" aria-hidden="true"></div>
+<div class="luz-cursor" id="luz-cursor" aria-hidden="true"></div>
+
+<header class="barra" id="barra">
+  <div class="miolo">
+    <a class="marca" href="#topo"><svg><use href="#i-p"/></svg>PILI</a>
+    <nav>
+      <a href="#alerts">PILI ALERTS</a>
+      <a href="#stream">PILI Stream</a>
+      <a href="#bot">PILI BOT</a>
+      <a href="#upgrade">PILI UPGRADE SOUND</a>
+      <a href="#audio">PILI AUDIO</a>
+      <a href="#catalogo">Catálogo</a>
+    </nav>
+    <a class="botao-mini" data-whats="Olá! Vim pelo site e quero comprar um programa da PILI." href="#">Comprar</a>
   </div>
 </header>
 
-<main class="wrap">
+<main id="topo">
 
-  <section>
-    <h2>O que é o PILI ALERTS</h2>
-    <p>O PILI ALERTS é um programa instalado no computador de quem transmite ao vivo, que conecta simultaneamente às contas do streamer no TikTok, YouTube, Twitch e Kick, e mostra tudo isso — chat, seguidores, presentes, membros — dentro do OBS ou de qualquer outro programa de transmissão, através de janelas de overlay personalizáveis.</p>
-    <p>O objetivo é simples: quem transmite pra mais de uma plataforma ao mesmo tempo não precisa mais ficar alternando entre telas separadas pra acompanhar o que está acontecendo em cada uma.</p>
-  </section>
+<!-- ============ ABERTURA ============ -->
+<section class="abertura" id="abertura" data-cor="#9B5CFF" data-cor2="#5C3DFF">
+  <div class="raios"></div>
+  <div class="piso"></div>
+  <canvas id="poeira"></canvas>
+  <div class="conteudo miolo" id="abertura-conteudo">
+    <div class="palco-logo surge" id="logo-abertura" data-cor="#9B5CFF" data-cor2="#E2D4FF" data-camadas="34" data-fundo="90"></div>
+    <div class="olho surge d1">PILI</div>
+    <h1 class="surge d2">Feito para quem<br><span>vive ao vivo.</span></h1>
+    <p class="sub surge d3">Cinco programas, uma marca. Dos alertas ao som, tudo o que a sua live e o seu negócio precisam.</p>
+    <div class="botoes surge d4">
+      <a class="botao cheio" href="#catalogo">Ver o catálogo</a>
+      <a class="botao whats" data-whats="Olá! Vim pelo site e quero saber mais sobre os programas da PILI." href="#"><svg><use href="#i-whats"/></svg>Falar no WhatsApp</a>
+    </div>
+  </div>
+  <div class="desce">Role<i></i></div>
+</section>
 
-  <section>
-    <h2>Principais recursos</h2>
-    <div class="features">
-      <div class="feature">
-        <b>Chat unificado</b>
-        <span>Mensagens de todas as plataformas conectadas aparecem juntas, na mesma janela, com o design que o streamer escolher.</span>
+<!-- ============ FRASE QUE ACENDE ============ -->
+<section class="acende" data-cor="#9B5CFF" data-cor2="#3D8BFF">
+  <div class="miolo">
+    <p id="frase">Alertas que fazem o chat explodir. Uma live na horizontal e na vertical ao mesmo tempo. Um robô que vende pelo seu WhatsApp. Um som que entrega o passo do inimigo. E dois PCs tocando como um só.</p>
+  </div>
+</section>
+
+<!-- ============ PASSEIO PELOS PRODUTOS (rola e troca) ============ -->
+<section class="passeio" id="passeio">
+  <div class="passeio-fixo">
+    <div class="passeio-gigante" aria-hidden="true"><span>ALERTS</span><span>STREAM</span><span>BOT</span><span>UPGRADE</span><span>AUDIO</span></div>
+    <div class="passeio-palco" id="passeio-palco">
+      <div class="passeio-chao"></div>
+      <div class="passeio-logo" data-cor="#9B5CFF" data-cor2="#E2D4FF"></div>
+      <div class="passeio-logo" data-cor="#3D8BFF" data-cor2="#CFE2FF"></div>
+      <div class="passeio-logo" data-cor="#25D366" data-cor2="#D2FBE2"></div>
+      <div class="passeio-logo" data-cor="#FF3B5C" data-cor2="#FFD2DA"></div>
+      <div class="passeio-logo" data-cor="#FFB020" data-cor2="#FFEBC2"></div>
+      <div class="passeio-orbita" id="passeio-orbita"></div>
+    </div>
+    <div class="passeio-textos">
+      <div class="passeio-item" style="--c:#9B5CFF;--c2:#C9B0FF">
+        <div class="passeio-num">01 / 05</div>
+        <h3>PILI ALERTS</h3>
+        <p class="frase-grande">Sua live inteira. <span>Numa tela só.</span></p>
+        <p>Chat, seguidores, presentes e membros do TikTok, YouTube, Twitch e Kick juntos, direto no OBS.</p>
+        <div class="botoes"><button class="botao cheio" data-filme="alerts"><span class="play"><svg><use href="#i-play"/></svg></span>Assistir ao filme</button><a class="botao vazado" href="#alerts">Saiba mais ›</a></div>
       </div>
-      <div class="feature">
-        <b>Alertas personalizáveis</b>
-        <span>Avisos na tela quando alguém segue, entra, envia um presente ou vira membro — com imagem, texto e som próprios.</span>
+      <div class="passeio-item" style="--c:#3D8BFF;--c2:#9CC4FF">
+        <div class="passeio-num">02 / 05</div>
+        <h3>PILI Stream</h3>
+        <p class="frase-grande">Horizontal e vertical. <span>Ao mesmo tempo.</span></p>
+        <p>Um estúdio de live completo, para várias plataformas juntas e já ligado ao PILI ALERTS.</p>
+        <div class="botoes"><button class="botao cheio" data-filme="stream"><span class="play"><svg><use href="#i-play"/></svg></span>Assistir ao filme</button><a class="botao vazado" href="#stream">Saiba mais ›</a></div>
       </div>
-      <div class="feature">
-        <b>Integração oficial com o YouTube</b>
-        <span>Login opcional com a conta do Google para identificar o nível de membership de cada espectador, e localizar a própria live automaticamente.</span>
+      <div class="passeio-item" style="--c:#25D366;--c2:#8BF0B5">
+        <div class="passeio-num">03 / 05</div>
+        <h3>PILI BOT</h3>
+        <p class="frase-grande">Seu WhatsApp <span>vendendo sozinho.</span></p>
+        <p>Responde na hora, segue as conversas que você montou e entrega cada pedido organizado.</p>
+        <div class="botoes"><button class="botao cheio" data-filme="bot"><span class="play"><svg><use href="#i-play"/></svg></span>Assistir ao filme</button><a class="botao vazado" href="#bot">Saiba mais ›</a></div>
       </div>
-      <div class="feature">
-        <b>Editor de clipes</b>
-        <span>Recorte dos melhores momentos da transmissão direto no programa, processado localmente no computador do usuário.</span>
+      <div class="passeio-item" style="--c:#FF3B5C;--c2:#FF9FB0">
+        <div class="passeio-num">04 / 05 · GRÁTIS</div>
+        <h3>PILI UPGRADE SOUND</h3>
+        <p class="frase-grande">Ouça o inimigo <span>antes que ele te veja.</span></p>
+        <p>Som ajustado para o seu fone, 7.1 virtual e controle de tiro para o Call of Duty.</p>
+        <div class="botoes"><button class="botao cheio" data-filme="upgrade"><span class="play"><svg><use href="#i-play"/></svg></span>Assistir ao filme</button><a class="botao vazado" href="#upgrade">Saiba mais ›</a></div>
       </div>
-      <div class="feature">
-        <b>Narração por voz</b>
-        <span>Leitura das mensagens do chat em voz alta, com uma voz neural que roda totalmente offline.</span>
+      <div class="passeio-item" style="--c:#FFB020;--c2:#FFD480">
+        <div class="passeio-num">05 / 05</div>
+        <h3>PILI AUDIO</h3>
+        <p class="frase-grande">Dois PCs. <span>Um só som.</span></p>
+        <p>Até 10 faixas do PC do jogo para o PC da live, e cada uma vira uma fonte no OBS.</p>
+        <div class="botoes"><button class="botao cheio" data-filme="audio"><span class="play"><svg><use href="#i-play"/></svg></span>Assistir ao filme</button><a class="botao vazado" href="#audio">Saiba mais ›</a></div>
       </div>
     </div>
-  </section>
+    <nav class="passeio-pontos" id="passeio-pontos" aria-label="Produtos">
+      <button style="--c:#9B5CFF">ALERTS</button><button style="--c:#3D8BFF">Stream</button><button style="--c:#25D366">BOT</button><button style="--c:#FF3B5C">UPGRADE</button><button style="--c:#FFB020">AUDIO</button>
+      <i id="passeio-barra"></i>
+    </nav>
+    <div class="passeio-dica">Role para passar pelos produtos</div>
+  </div>
+</section>
 
-  <section>
-    <h2>Como funciona</h2>
-    <p>O PILI ALERTS roda inteiramente no computador do próprio streamer. Ele se conecta às plataformas usando as credenciais que o próprio usuário autoriza, e as informações da live (chat, seguidores, presentes) são processadas localmente para gerar os alertas e overlays — sem passar por nenhum servidor da PILI.</p>
-  </section>
+<section class="detalhe-titulo" data-cor="#9B5CFF" data-cor2="#FFB020">
+  <div class="miolo titulo-secao surge">
+    <h2>Cada detalhe.</h2>
+    <p>Tudo o que cada programa faz pela sua live e pelo seu negócio.</p>
+  </div>
+</section>
+
+<!-- ============ PILI ALERTS ============ -->
+<section class="produto" id="alerts" style="--c:#9B5CFF;--c2:#C9B0FF">
+  <div class="miolo">
+    <div class="grade">
+      <div class="texto">
+        <div class="nome surge">PILI ALERTS</div>
+        <h2 class="surge d1">Sua live inteira.<br><span class="cor">Numa tela só.</span></h2>
+        <p class="surge d2">O PILI ALERTS é um programa instalado no computador de quem transmite ao vivo. Ele conecta ao mesmo tempo às suas contas do <b>TikTok, YouTube, Twitch e Kick</b> e mostra chat, seguidores, presentes e membros dentro do OBS, em janelas de overlay do seu jeito.</p>
+        <div class="botoes surge d3">
+          <button class="botao cheio" data-filme="alerts"><span class="play"><svg><use href="#i-play"/></svg></span>Assistir ao filme</button>
+          <a class="botao vazado" data-whats="Olá! Quero comprar o PILI ALERTS." href="#">Comprar ›</a>
+        </div>
+      </div>
+      <div class="vitrine surge" data-filme="alerts" title="Assistir ao filme do PILI ALERTS">
+        <div class="anel"></div><div class="anel"></div><div class="chao"></div>
+        <div class="logo-produto" data-cor="#9B5CFF" data-cor2="#D9C6FF"></div>
+        <div class="dica">▶ Toque para assistir</div>
+      </div>
+    </div>
+
+    <div class="numeros">
+      <div class="numero surge"><strong>4</strong><span>plataformas ao mesmo tempo</span></div>
+      <div class="numero surge d1"><strong>1</strong><span>chat unificado, com o design que você escolher</span></div>
+      <div class="numero surge d2"><strong>100%</strong><span>no seu computador, sem servidor da PILI no meio</span></div>
+    </div>
+    <div class="recursos">
+      <div class="recurso surge"><i>💬</i><div><b>Chat unificado</b><span>Mensagens de todas as plataformas conectadas aparecem juntas, na mesma janela.</span></div></div>
+      <div class="recurso surge d1"><i>🔔</i><div><b>Alertas personalizáveis</b><span>Avisos na tela quando alguém segue, entra, envia um presente ou vira membro — com imagem, texto e som próprios.</span></div></div>
+      <div class="recurso surge"><i>✂️</i><div><b>Editor de clipes</b><span>Recorte os melhores momentos da transmissão direto no programa, processado no seu computador.</span></div></div>
+      <div class="recurso surge d1"><i>🎙️</i><div><b>Narração por voz</b><span>Leitura das mensagens do chat em voz alta, com uma voz neural que roda totalmente sem internet.</span></div></div>
+    </div>
+    <div class="google surge">
+      <div class="g"><svg width="24" height="24" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.7c4.3-4 6.9-9.9 6.9-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.7c-2.1 1.4-4.8 2.2-8.5 2.2-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+      <div>
+        <h3>Integração oficial com o YouTube (login com o Google)</h3>
+        <p>O login com a conta do Google é <b>opcional</b>. Quando usado, o PILI ALERTS pede permissão só de leitura sobre o canal do YouTube do próprio usuário, para identificar o nível de membro de cada espectador e localizar a sua live automaticamente.</p>
+        <p>O PILI ALERTS roda inteiramente no computador do próprio streamer. As informações da live (chat, seguidores, presentes) são processadas no seu computador para gerar os alertas e overlays — sem passar por nenhum servidor da PILI.</p>
+        <p><a href="privacidade.html">Leia a Política de Privacidade do PILI ALERTS ›</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PILI STREAM ============ -->
+<section class="produto inverte" id="stream" style="--c:#3D8BFF;--c2:#9CC4FF">
+  <div class="miolo">
+    <div class="grade">
+      <div class="texto">
+        <div class="nome surge">PILI Stream</div>
+        <h2 class="surge d1">Horizontal e vertical.<br><span class="cor">Ao mesmo tempo.</span></h2>
+        <p class="surge d2">Um estúdio de live completo. Transmita para <b>várias plataformas juntas</b>, com a tela deitada e a tela em pé na mesma live — e já ligado ao PILI ALERTS.</p>
+        <div class="botoes surge d3">
+          <button class="botao cheio" data-filme="stream"><span class="play"><svg><use href="#i-play"/></svg></span>Assistir ao filme</button>
+          <a class="botao vazado" data-whats="Olá! Quero comprar o PILI Stream." href="#">Comprar ›</a>
+        </div>
+      </div>
+      <div class="vitrine surge" data-filme="stream" title="Assistir ao filme do PILI Stream">
+        <div class="anel"></div><div class="anel"></div><div class="chao"></div>
+        <div class="logo-produto" data-cor="#3D8BFF" data-cor2="#B5D3FF"></div>
+        <div class="dica">▶ Toque para assistir</div>
+      </div>
+    </div>
+    <div class="numeros">
+      <div class="numero surge"><strong>2</strong><span>telas na mesma live: horizontal e vertical</span></div>
+      <div class="numero surge d1"><strong>1</strong><span>live enviada para várias plataformas</span></div>
+      <div class="numero surge d2"><strong>Sozinho</strong><span>ele se atualiza, sem você reinstalar nada</span></div>
+    </div>
+    <div class="recursos">
+      <div class="recurso surge"><i>📡</i><div><b>Várias plataformas de uma vez</b><span>Entre ao vivo em todas as suas plataformas com um clique.</span></div></div>
+      <div class="recurso surge d1"><i>🔗</i><div><b>Ligado ao PILI ALERTS</b><span>Seus alertas e o chat já aparecem no estúdio, sem configurar nada a mais.</span></div></div>
+      <div class="recurso surge"><i>🎚️</i><div><b>Volume por trilha</b><span>Jogo, microfone, música e alertas, cada um no seu controle.</span></div></div>
+      <div class="recurso surge d1"><i>⚙️</i><div><b>Qualidade por live</b><span>Cada plataforma recebe a qualidade certa para ela.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PILI BOT ============ -->
+<section class="produto" id="bot" style="--c:#25D366;--c2:#8BF0B5">
+  <div class="miolo">
+    <div class="grade">
+      <div class="texto">
+        <div class="nome surge">PILI BOT</div>
+        <h2 class="surge d1">Seu WhatsApp<br><span class="cor">respondendo sozinho.</span></h2>
+        <p class="surge d2">O PILI BOT atende os seus clientes na hora, segue as conversas que você montou e entrega cada pedido organizado — <b>de dia e de madrugada</b>.</p>
+        <div class="botoes surge d3">
+          <button class="botao cheio" data-filme="bot"><span class="play"><svg><use href="#i-play"/></svg></span>Assistir ao filme</button>
+          <a class="botao vazado" data-whats="Olá! Quero comprar o PILI BOT." href="#">Comprar ›</a>
+        </div>
+      </div>
+      <div class="vitrine surge" data-filme="bot" title="Assistir ao filme do PILI BOT">
+        <div class="anel"></div><div class="anel"></div><div class="chao"></div>
+        <div class="logo-produto" data-cor="#25D366" data-cor2="#A6F5C6"></div>
+        <div class="dica">▶ Toque para assistir</div>
+      </div>
+    </div>
+    <div class="numeros">
+      <div class="numero surge"><strong>24h</strong><span>atendendo sem parar</span></div>
+      <div class="numero surge d1"><strong>1 QR</strong><span>e ele já está ligado ao seu WhatsApp</span></div>
+      <div class="numero surge d2"><strong>0</strong><span>linhas de código para montar as conversas</span></div>
+    </div>
+    <div class="recursos">
+      <div class="recurso surge"><i>🧩</i><div><b>Conversas em blocos</b><span>Monte o caminho do atendimento arrastando blocos. Exporte e importe quando quiser.</span></div></div>
+      <div class="recurso surge d1"><i>🧾</i><div><b>Contatos e pedidos</b><span>Cada pedido chega organizado. Encerrou? Um clique e o contato começa do zero.</span></div></div>
+      <div class="recurso surge"><i>✋</i><div><b>Assuma quando quiser</b><span>Pause o robô numa conversa e responda você mesmo.</span></div></div>
+      <div class="recurso surge d1"><i>👥</i><div><b>Equipe com permissões</b><span>Administrador vê tudo; atendente vê só os contatos e pedidos.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PILI UPGRADE SOUND ============ -->
+<section class="produto inverte" id="upgrade" style="--c:#FF3B5C;--c2:#FF9FB0">
+  <div class="miolo">
+    <div class="grade">
+      <div class="texto">
+        <div class="nome surge">PILI UPGRADE SOUND <em>GRÁTIS</em></div>
+        <h2 class="surge d1">Ouça o inimigo<br><span class="cor">antes que ele te veja.</span></h2>
+        <p class="surge d2">Equalizador feito para o <b>Call of Duty</b>. Ajusta o som para o seu fone, cria um 7.1 virtual e abaixa o barulho da sua arma para os passos aparecerem.</p>
+        <div class="botoes surge d3">
+          <button class="botao cheio" data-filme="upgrade"><span class="play"><svg><use href="#i-play"/></svg></span>Assistir ao filme</button>
+          <a class="botao vazado" data-whats="Olá! Quero receber o PILI UPGRADE SOUND." href="#">Quero o meu ›</a>
+        </div>
+      </div>
+      <div class="vitrine surge" data-filme="upgrade" title="Assistir ao filme do PILI UPGRADE SOUND">
+        <div class="anel"></div><div class="anel"></div><div class="chao"></div>
+        <div class="logo-produto" data-cor="#FF3B5C" data-cor2="#FFB3C0"></div>
+        <div class="dica">▶ Toque para assistir</div>
+      </div>
+    </div>
+    <div class="numeros">
+      <div class="numero surge"><strong>6.837</strong><span>medições de fones para escolher o seu</span></div>
+      <div class="numero surge d1"><strong>7.1</strong><span>som virtual em volta de você</span></div>
+      <div class="numero surge d2"><strong>~35 ms</strong><span>de atraso, ao vivo</span></div>
+    </div>
+    <div class="recursos">
+      <div class="recurso surge"><i>🎧</i><div><b>Perfil do seu fone</b><span>Escolha o modelo e a curva de som é ajustada para ele.</span></div></div>
+      <div class="recurso surge d1"><i>🔫</i><div><b>Controle de tiro</b><span>Na hora do disparo, a frente abaixa e os passos continuam lá.</span></div></div>
+      <div class="recurso surge"><i>🧭</i><div><b>Radar de direção</b><span>Suba ou abaixe cada lado do som com um toque no radar.</span></div></div>
+      <div class="recurso surge d1"><i>🌐</i><div><b>Som 7.1 virtual</b><span>Transforma o som em 7.1 e coloca cada alto-falante em volta da sua cabeça.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PILI AUDIO ============ -->
+<section class="produto" id="audio" style="--c:#FFB020;--c2:#FFD480">
+  <div class="miolo">
+    <div class="grade">
+      <div class="texto">
+        <div class="nome surge">PILI AUDIO</div>
+        <h2 class="surge d1">Dois PCs.<br><span class="cor">Um só som.</span></h2>
+        <p class="surge d2">Mesa de som em rede: manda até <b>10 faixas</b> do PC do jogo para o PC da live, separadas por programa — e cada faixa vira uma fonte no OBS.</p>
+        <div class="botoes surge d3">
+          <button class="botao cheio" data-filme="audio"><span class="play"><svg><use href="#i-play"/></svg></span>Assistir ao filme</button>
+          <a class="botao vazado" data-whats="Olá! Quero comprar o PILI AUDIO." href="#">Comprar ›</a>
+        </div>
+      </div>
+      <div class="vitrine surge" data-filme="audio" title="Assistir ao filme do PILI AUDIO">
+        <div class="anel"></div><div class="anel"></div><div class="chao"></div>
+        <div class="logo-produto" data-cor="#FFB020" data-cor2="#FFDE9A"></div>
+        <div class="dica">▶ Toque para assistir</div>
+      </div>
+    </div>
+    <div class="numeros">
+      <div class="numero surge"><strong>10</strong><span>faixas de som separadas</span></div>
+      <div class="numero surge d1"><strong>2</strong><span>PCs, o mesmo app nos dois</span></div>
+      <div class="numero surge d2"><strong>Auto</strong><span>acha os PCs da sua casa sozinho</span></div>
+    </div>
+    <div class="recursos">
+      <div class="recurso surge"><i>🪟</i><div><b>Separa por programa</b><span>Jogo, Discord, música e navegador, cada um na sua faixa.</span></div></div>
+      <div class="recurso surge d1"><i>🎛️</i><div><b>Rotas de mesa de som</b><span>Escolha para onde vai cada faixa, igual a uma mesa de verdade.</span></div></div>
+      <div class="recurso surge"><i>🧱</i><div><b>Complemento do OBS</b><span>Cada faixa aparece como uma fonte de som no OBS.</span></div></div>
+      <div class="recurso surge d1"><i>📶</i><div><b>Só a rede de casa</b><span>Nada sai da sua casa: os dois PCs conversam pela sua rede.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATÁLOGO ============ -->
+<section class="catalogo" id="catalogo" data-cor="#7A4DFF" data-cor2="#3D8BFF">
+  <div class="miolo">
+    <div class="titulo-secao surge">
+      <h2>Catálogo.</h2>
+      <p>Escolha o seu e fale direto no WhatsApp.</p>
+    </div>
+    <div class="cartoes">
+      <article class="cartao surge" style="--c:#9B5CFF;--c2:#C9B0FF">
+        <div class="mini" data-cor="#9B5CFF" data-cor2="#D9C6FF"></div>
+        <h3>PILI ALERTS</h3>
+        <p class="uma">Alertas e chat de 4 plataformas numa tela só.</p>
+        <ul><li>TikTok, YouTube, Twitch e Kick juntos</li><li>Alertas com imagem, texto e som</li><li>Editor de clipes e narração por voz</li><li>Login com o Google opcional</li></ul>
+        <div class="preco">Preço<b>pelo WhatsApp</b></div>
+        <a class="botao whats" data-whats="Olá! Quero comprar o PILI ALERTS." href="#"><svg><use href="#i-whats"/></svg>Comprar</a>
+        <button class="ver" data-filme="alerts">▶ Assistir ao filme</button>
+      </article>
+      <article class="cartao surge d1" style="--c:#3D8BFF;--c2:#9CC4FF">
+        <div class="mini" data-cor="#3D8BFF" data-cor2="#B5D3FF"></div>
+        <h3>PILI Stream</h3>
+        <p class="uma">Estúdio de live horizontal e vertical juntos.</p>
+        <ul><li>Várias plataformas na mesma live</li><li>Já ligado ao PILI ALERTS</li><li>Volume por trilha e qualidade por live</li><li>Atualização automática</li></ul>
+        <div class="preco">Preço<b>pelo WhatsApp</b></div>
+        <a class="botao whats" data-whats="Olá! Quero comprar o PILI Stream." href="#"><svg><use href="#i-whats"/></svg>Comprar</a>
+        <button class="ver" data-filme="stream">▶ Assistir ao filme</button>
+      </article>
+      <article class="cartao surge d2" style="--c:#25D366;--c2:#8BF0B5">
+        <div class="mini" data-cor="#25D366" data-cor2="#A6F5C6"></div>
+        <h3>PILI BOT</h3>
+        <p class="uma">Robô que atende e vende pelo seu WhatsApp.</p>
+        <ul><li>Liga com um QR code</li><li>Conversas montadas em blocos</li><li>Contatos e pedidos organizados</li><li>Equipe com permissões</li></ul>
+        <div class="preco">Preço<b>pelo WhatsApp</b></div>
+        <a class="botao whats" data-whats="Olá! Quero comprar o PILI BOT." href="#"><svg><use href="#i-whats"/></svg>Comprar</a>
+        <button class="ver" data-filme="bot">▶ Assistir ao filme</button>
+      </article>
+      <article class="cartao surge" style="--c:#FF3B5C;--c2:#FF9FB0">
+        <div class="mini" data-cor="#FF3B5C" data-cor2="#FFB3C0"></div>
+        <h3>PILI UPGRADE SOUND</h3>
+        <p class="uma">Som de vantagem para o Call of Duty.</p>
+        <ul><li>6.837 medições de fones</li><li>Som 7.1 virtual</li><li>Controle de tiro e radar de direção</li><li>Perfis com créditos AutoEQ e ArtTuneDB</li></ul>
+        <div class="preco">Preço<b>Grátis</b></div>
+        <a class="botao whats" data-whats="Olá! Quero receber o PILI UPGRADE SOUND." href="#"><svg><use href="#i-whats"/></svg>Quero o meu</a>
+        <button class="ver" data-filme="upgrade">▶ Assistir ao filme</button>
+      </article>
+      <article class="cartao surge d1" style="--c:#FFB020;--c2:#FFD480">
+        <div class="mini" data-cor="#FFB020" data-cor2="#FFDE9A"></div>
+        <h3>PILI AUDIO</h3>
+        <p class="uma">Mesa de som em rede entre dois PCs.</p>
+        <ul><li>Até 10 faixas separadas por programa</li><li>Acha os PCs da casa sozinho</li><li>Cada faixa vira fonte no OBS</li><li>O mesmo app nos dois PCs</li></ul>
+        <div class="preco">Preço<b>pelo WhatsApp</b></div>
+        <a class="botao whats" data-whats="Olá! Quero comprar o PILI AUDIO." href="#"><svg><use href="#i-whats"/></svg>Comprar</a>
+        <button class="ver" data-filme="audio">▶ Assistir ao filme</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAMADA FINAL ============ -->
+<section class="final" data-cor="#25D366" data-cor2="#9B5CFF">
+  <div class="miolo">
+    <h2 class="surge">Pronto para<br>subir de nível?</h2>
+    <p class="surge d1">Fale direto no WhatsApp, tire as suas dúvidas e receba o seu programa hoje.</p>
+    <div class="botoes surge d2">
+      <a class="botao whats" data-whats="Olá! Vim pelo site e quero comprar um programa da PILI." href="#"><svg><use href="#i-whats"/></svg>Chamar no WhatsApp</a>
+    </div>
+  </div>
+</section>
 
 </main>
 
 <footer>
-  <div class="wrap">
-    <p><a href="privacidade.html">Política de Privacidade</a></p>
-    <p style="margin-top:8px;">PILI ALERTS</p>
+  <div class="miolo">
+    <div>© 2026 PILI · PILI ALERTS, PILI Stream, PILI BOT, PILI UPGRADE SOUND e PILI AUDIO</div>
+    <nav>
+      <a href="privacidade.html">Política de Privacidade</a>
+      <a href="#catalogo">Catálogo</a>
+      <a data-whats="Olá! Preciso de ajuda com um programa da PILI." href="#">Suporte no WhatsApp</a>
+    </nav>
   </div>
 </footer>
 
+<a class="flutua" id="flutua" data-whats="Olá! Vim pelo site e quero comprar um programa da PILI." href="#" aria-label="Falar no WhatsApp"><svg style="color:#04120a"><use href="#i-whats"/></svg></a>
+
+<!-- ============ FILME ============ -->
+<div class="cinema" id="cinema" aria-hidden="true">
+  <div class="tela">
+    <div style="position:relative">
+      <button class="fechar" id="fechar" aria-label="Fechar"><svg viewBox="0 0 14 14"><path d="M1 1l12 12M13 1L1 13" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <div class="quadro" id="quadro"><div class="escala" id="palco"></div></div>
+    </div>
+    <div class="legenda" id="legenda"></div>
+    <div class="controles">
+      <button id="tocar" aria-label="Pausar"></button>
+      <button id="denovo" aria-label="Ver de novo"><svg viewBox="0 0 16 16"><path d="M3 8a5 5 0 1 0 1.5-3.6M3 2v3h3" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="linha-tempo" id="linha"><i></i><b></b></div>
+      <button class="voz" id="voz" hidden></button>
+      <a class="comprar" id="comprar-filme" href="#"><span style="display:flex;gap:7px;align-items:center;padding:0 16px;height:40px"><svg width="18" height="18"><use href="#i-whats"/></svg>Comprar</span></a>
+    </div>
+  </div>
+</div>
+
+<script src="assets/site.js"></script>
+<script src="assets/filmes.js"></script>
+<script src="assets/vivo.js"></script>
 </body>
 </html>
